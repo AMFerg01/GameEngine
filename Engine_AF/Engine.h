@@ -1,11 +1,12 @@
 #pragma once
 #include <SDL.h>
+#include "RenderingSystem.h"
 class Engine
 {
 private:
 	SDL_Window* window;
 	bool quit;
-
+	RenderingSystem* renderingSystem;
 	Engine(void);
 	~Engine(void);
 

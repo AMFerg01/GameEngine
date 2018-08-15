@@ -1,7 +1,7 @@
 #include "Engine.h"
 #include <SDL.h>
 #include <iostream>
-Engine::Engine(void)
+Engine::Engine(void) : quit(false)
 {
 	if( SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
@@ -10,6 +10,8 @@ Engine::Engine(void)
 		system("Pause");
 		exit(EXIT_FAILURE);
 	}
+
+	
 
 	SDL_Window* window = SDL_CreateWindow(
 		"Engine", 
@@ -27,7 +29,7 @@ Engine::Engine(void)
 		exit(EXIT_FAILURE);
 	}
 
-	
+	renderingSystem = new RenderingSystem(window);
 }
 void Engine::start()
 {
@@ -45,6 +47,7 @@ void Engine::update()
 		{
 			quit = true;
 		}
+		renderingSystem->update();
 	}
 }
 Engine& Engine::getInstance(void)
@@ -55,6 +58,7 @@ Engine& Engine::getInstance(void)
 
 Engine::~Engine(void)
 {
+	delete renderingSystem;
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 }
