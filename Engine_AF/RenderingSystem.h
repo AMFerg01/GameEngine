@@ -1,9 +1,10 @@
 #pragma once
-#include "ISystem.h"
+#include "System.h"
 #include <SDL.h>
 #include "iostream"
+#include "Entity.h"
 
-class RenderingSystem : ISystem
+class RenderingSystem : System<RenderingSystem>
 {
 public:
 	RenderingSystem(SDL_Window* window);
@@ -12,4 +13,3 @@ public:
 private:
 	SDL_Renderer* renderer;
 };
-

@@ -1,6 +1,9 @@
 #pragma once
 #include <SDL.h>
 #include "RenderingSystem.h"
+#include "Component.h"
+#include "Sprite.h"
+#include "Position.h"
 class Engine
 {
 private:

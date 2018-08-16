@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include <SDL.h>
 #include <iostream>
+#include "Entity.h"
 Engine::Engine(void) : quit(false)
 {
 	if( SDL_Init(SDL_INIT_VIDEO) != 0)
@@ -33,6 +34,12 @@ Engine::Engine(void) : quit(false)
 }
 void Engine::start()
 {
+	Entity e;
+	std::cout << "Entity e ComponentMask: " << e.getComponentMask() << std::endl;
+	e.addComponent<Position>();
+	std::cout << "Entity e ComponentMask: " << e.getComponentMask() << std::endl;
+	e.addComponent<Sprite>();
+	std::cout << "Entity e ComponentMask: " << e.getComponentMask() << std::endl;
 	while(!quit)	
 	{
 		update();
